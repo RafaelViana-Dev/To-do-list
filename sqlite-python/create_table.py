@@ -1,6 +1,5 @@
 import sqlite3
 
-database = 'dados.db'
 sql_statements = [
     """CREATE TABLE IF NOT EXISTS task (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -10,7 +9,7 @@ sql_statements = [
 ]
 
 try:
-    with sqlite3.connect(database) as conn:
+    with sqlite3.connect('dados.db') as conn:
         # interact with database
         cursor = conn.cursor()
 
@@ -19,6 +18,6 @@ try:
 
         conn.commit()
 
-        print(f"Tabela 'task' criada em {database}")
+        print(f"Tabela 'task' criada")
 except sqlite3.OperationalError as e:
     print("Failed to create tables:", e)
