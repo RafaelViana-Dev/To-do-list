@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #025951;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #F2E6DF;
+    border-radius: 10px;
+}
+
+.container h1 {
+    font-size: 2em;
+    color: #BF500F;
+}
+
+.inputArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.inputArea input {
+    flex: 1;
+    padding: 10px 17px;
+    font-size: 1.1rem;
+} 
+
+.inputArea button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    color: #BF500F;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
