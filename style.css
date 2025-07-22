@@ -44,17 +44,39 @@ body {
     flex: 1;
     padding: 10px 17px;
     font-size: 1.1rem;
+    outline: none;
+    border: 2px solid #BF500F;
+    border-left: none;
+    border-right: none;
+    background-color: #f2e6df9c;
+    
 } 
 
+.inputArea input::placeholder {
+    color: #025951;
+
+}
 .inputArea button {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
-    padding: 8px;
+    padding: 12px;
     border-radius: 50%;
-    color: #BF500F;
+    background-color: #BF500F;
+    color: #F2E6DF;
+    border: none;
     font-size: 1.1rem;
     cursor: pointer;
+    
 }
 
+.todoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#taskList {
+    width: 100%;
+}
