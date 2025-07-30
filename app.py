@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 database = 'sqlite-python/dados.db'
 
+#API - GET
 @app.route('/todo/getall',methods=['GET'])
 def getTasks():
     with sqlite3.connect(database) as conn:
