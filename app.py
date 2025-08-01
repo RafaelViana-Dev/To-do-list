@@ -1,9 +1,13 @@
 import sqlite3
 import json
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 app = Flask(__name__)
 
 database = 'sqlite-python/dados.db'
+
+CORS(app)
 
 #API - GET
 @app.route('/todo/getall',methods=['GET'])
