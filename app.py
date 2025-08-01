@@ -17,15 +17,38 @@ def getTasks():
 
 @app.route('/todo/create',methods=['POST'])
 def createTask():
-    return 'Create new task'
+    req_data = request.get_json()
+    task_id = req_data['id']
+    task_nome = req_data['nome']
+    task_descricao = req_data['descricao']
 
-@app.route('/todo/update',methods=['UPDATE'])
-def updateTask():
-    return 'Update task'
+    with sqlite3.connect(database) as conn:
+        cursor = conn.cursor()
 
-@app.route('/todo/delete',methods=['DELETE'])
-def deleteTask():
-    return 'Delete task'
+        cursor.execute('INSERT INTO task (id, nome, descricao) VALUES (?, ?, ?)', (task_id, task_nome, task_descricao,))
+    return jsonify(req_data)
+    #return 'Create new task'
+
+@app.route('/todo/update/<int:task_id>',methods=['PUT'])
+def updateTask(task_id):
+    req_data = request.get_json()
+    task_nome = req_data['nome']
+    task_descricao = req_data['descricao']
+
+    with sqlite3.connect(database) as conn:
+        cursor = conn.cursor()
+
+        cursor.execute('UPDATE task SET nome = ?, descricao = ? WHERE id = ?', (task_nome, task_descricao, task_id,))
+
+    return jsonify(req_data)
+
+@app.route('/todo/delete/<int:task_id>',methods=['DELETE'])
+def deleteTask(task_id):
+    with sqlite3.connect(database) as conn:
+        cursor = conn.cursor()
+
+        cursor.execute('DELETE from task WHERE id = ?', (task_id,))
+    return jsonify({"message": "Tarefa deletada com sucesso!", "id_deletado": task_id})
 
 if __name__ == '__main__':
     app.run(debug=True)
