@@ -22,14 +22,15 @@ def getTasks():
 @app.route('/todo/create',methods=['POST'])
 def createTask():
     req_data = request.get_json()
-    task_id = req_data['id']
     task_nome = req_data['nome']
     task_descricao = req_data['descricao']
 
     with sqlite3.connect(database) as conn:
         cursor = conn.cursor()
 
-        cursor.execute('INSERT INTO task (id, nome, descricao) VALUES (?, ?, ?)', (task_id, task_nome, task_descricao,))
+        cursor.execute('INSERT INTO task (nome, descricao) VALUES (?, ?)', (task_nome, task_descricao,))
+        new_id = cursor.lastrowid
+        req_data['id'] = new_id
     return jsonify(req_data)
     #return 'Create new task'
 

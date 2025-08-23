@@ -4,7 +4,8 @@ sql_statements = [
     """CREATE TABLE IF NOT EXISTS task (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	nome text NOT NULL,
-	descricao text NOT NULL
+	descricao text NOT NULL,
+    conluido INTERGER NOT NULL DEFAULT 0
 );"""
 ]
 
