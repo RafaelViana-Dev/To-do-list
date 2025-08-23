@@ -3,25 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.querySelector('.inputArea');
     const taskInput = document.getElementById('newTask')
+    const taskDescricao = document.getElementById('Description')
     const taskList = document.getElementById('taskList')
-    const apiUrl = 'http://localhost:3000/tasks';
+    const apiUrl = 'http://127.0.0.1:5000/todo/create';
     
 
      form.addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const taskText = taskInput.value.trim() 
+        const descriptionTask = taskDescricao.value.trim()
         if (taskText === '') return;
         
 
         const newTaskData = {
         nome: taskText,
-        completed: false // Você pode adicionar outros campos que seu back-end espera
+        descricao: descriptionTask
+    
+         // Você pode adicionar outros campos que seu back-end espera
     };
 
     try {
         // 2. Fazendo a requisição POST com o fetch
-        const response = await fetch('http://localhost:3000/tasks', {
+        const response = await fetch('http://127.0.0.1:5000/todo/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // Informa ao back-end que estamos enviando JSON
@@ -56,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             checkbox.classList.add('task-checkbox')
 
             const taskTextSpan = document.createElement('span');
-            taskTextSpan.textContent = task.title;
+            taskTextSpan.textContent = task.nome;
             taskTextSpan.classList.add('taskTextSpan');
 
             const deleteBtn = document.createElement('button')
