@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.querySelector('.inputArea');
     const taskInput = document.getElementById('newTask')
-    const taskDescricao = document.getElementById('Description')
+    const taskDescricao = document.getElementById('description')
     const taskList = document.getElementById('taskList')
     const apiUrl = 'http://127.0.0.1:5000/todo/create';
     
@@ -43,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         addTaskToUI(createdTask);
 
         taskInput.value = ''; 
+        taskDescricao.value = '';
         taskInput.focus();
+        taskDescricao.focus();
     } catch (error) {
         console.error('Falha na requisição:', error);
         alert('Não foi possível adicionar a tarefa.');
