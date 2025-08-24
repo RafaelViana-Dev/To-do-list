@@ -5,7 +5,7 @@ sql_statements = [
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	nome text NOT NULL,
 	descricao text NOT NULL,
-    conluido INTERGER NOT NULL DEFAULT 0
+    concluido INTERGER NOT NULL DEFAULT 0
 );"""
 ]
 
