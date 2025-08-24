@@ -28,9 +28,10 @@ def createTask():
     with sqlite3.connect(database) as conn:
         cursor = conn.cursor()
 
-        cursor.execute('INSERT INTO task (nome, descricao) VALUES (?, ?)', (task_nome, task_descricao,))
+        cursor.execute('INSERT INTO task (nome, descricao, concluido) VALUES (?, ?, 0)', (task_nome, task_descricao,))
         new_id = cursor.lastrowid
         req_data['id'] = new_id
+        req_data['concluido'] = 0
     return jsonify(req_data)
     #return 'Create new task'
 
@@ -39,11 +40,12 @@ def updateTask(task_id):
     req_data = request.get_json()
     task_nome = req_data['nome']
     task_descricao = req_data['descricao']
+    task_concluido = req_data['concluido']
 
     with sqlite3.connect(database) as conn:
         cursor = conn.cursor()
 
-        cursor.execute('UPDATE task SET nome = ?, descricao = ? WHERE id = ?', (task_nome, task_descricao, task_id,))
+        cursor.execute('UPDATE task SET nome = ?, descricao = ?, concluido = ?, WHERE id = ?', (task_nome, task_descricao, task_concluido, task_id,))
 
     return jsonify(req_data)
 
