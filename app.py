@@ -45,7 +45,7 @@ def updateTask(task_id):
     with sqlite3.connect(database) as conn:
         cursor = conn.cursor()
 
-        cursor.execute('UPDATE task SET nome = ?, descricao = ?, concluido = ?, WHERE id = ?', (task_nome, task_descricao, task_concluido, task_id,))
+        cursor.execute('UPDATE task SET nome = ?, descricao = ?, concluido = ? WHERE id = ?', (task_nome, task_descricao, task_concluido, task_id,))
 
     return jsonify(req_data)
 
